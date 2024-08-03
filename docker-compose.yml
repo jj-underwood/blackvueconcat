@@ -1,0 +1,27 @@
+version: '3'
+services:
+    blackvueconcat:
+        build:
+            context: .
+        image: jjunderwood/blackvueconcat
+        container_name: blackvueconcat
+        environment:
+            TZ: America/Los_Angels
+            LOGGING_LEVEL: DEBUG
+            SOURCE_DIR: /mnt/your-dashcam-recordings
+            WORK_DIR: /mnt/your-dashcam-recordings
+            OUTPUT_DIR: /mnt/your-dashcam-recordings
+            CONSECUTIVE_THRESHOLD: ''
+            CONCAT_THRESHOLD: ''
+            RETENTION: ''
+            INITIAL_IMPACT: ''
+            NO_OUTPUT: ''
+            OVERWRITE: ''
+        volumes:
+            - /mnt:/mnt
+            - .:/app
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "10"
+
